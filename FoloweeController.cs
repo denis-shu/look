@@ -7,7 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace MyFirstProject.Controllers
+namespace Project.Controllers
 {
     public class FoloweeController : Controller
     {
