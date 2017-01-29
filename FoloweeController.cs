@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
-using MyFirstProject.Models;
-using MyFirstProject.Stabil;
+using Project.Models;
+using Project.Stabil;
 using System;
 using System.Collections.Generic;
 using System.Linq;
