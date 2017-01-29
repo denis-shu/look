@@ -8,7 +8,7 @@ using Project.ViewModels;
 using Project.Repos;
 using Project.Stabil;
 
-namespace MyFirstProject.Controllers
+namespace Project.Controllers
 {
     public class HomeController : Controller
     {
