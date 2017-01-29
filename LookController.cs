@@ -3,9 +3,9 @@ using MyFirstProject.Models;
 using MyFirstProject.ViewModels;
 using System.Linq;
 using System.Web.Mvc;
-using MyFirstProject.Stabil;
+using Project.Stabil;
 
-namespace MyFirstProject.Controllers
+namespace Project.Controllers
 {
     public class LookController : Controller
     {
