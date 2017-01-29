@@ -1,12 +1,12 @@
-﻿using MyFirstProject.Models;
+﻿using Project.Models;
 using System.Linq;
 using System.Data.Entity;
 using System.Web.Mvc;
 using System;
 using Microsoft.AspNet.Identity;
-using MyFirstProject.ViewModels;
-using MyFirstProject.Repos;
-using MyFirstProject.Stabil;
+using Project.ViewModels;
+using Project.Repos;
+using Project.Stabil;
 
 namespace MyFirstProject.Controllers
 {
