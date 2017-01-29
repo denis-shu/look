@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
-using MyFirstProject.Models;
-using MyFirstProject.ViewModels;
+using Project.Models;
+using Project.ViewModels;
 using System.Linq;
 using System.Web.Mvc;
 using Project.Stabil;
