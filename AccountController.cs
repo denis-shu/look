@@ -10,7 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Project.Models;
 
-namespace MyFirstProject.Controllers
+namespace Project.Controllers
 {
     [Authorize]
     public class AccountController : Controller
