@@ -1,0 +1,38 @@
+namespace Project.Stabil
+{
+    public class BitOfWork:IBitOfWork
+    {
+        private readonly ApplicationDbContext _context;
+        public IProjectRepo Projects { get; }
+        public IVisitRepo Visits { get; }
+        public IGenresRepo Genres { get; }
+        public IFollowingRepo Followings { get; }
+        public IUserNotifRepo UserNotifs { get; }
+
+
+
+        public BitOfWork(ApplicationDbContext context)
+        {
+            _context = context;
+            Projects = new ProjectRepo(context);
+            Visits = new VisitRepo(context);
+            Genres = new GenresRepo(context);
+            Followings = new FollowingRepo(context);
+            UserNotifs = new UserNotifRepo(context);
+        }
+
+        public void Complete()
+        {
+            _context.SaveChanges();
+        }
+    }
+    public interface IBitOfWork
+    {
+        IProjectRepo Projects { get; }
+        IVisitRepo Visits { get; }
+        IGenresRepo Genres { get; }
+        IFollowingRepo Followings { get; }
+        IUserNotifRepo UserNotifs { get; }
+        void Complete();
+    }
+}
