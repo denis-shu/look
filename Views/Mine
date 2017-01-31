@@ -1,0 +1,82 @@
+@model  IEnumerable<MyFirstProject.Models.Project>
+@{
+    ViewBag.Title = "Mine";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Mine upcoming projects</h2>
+<ul class="projects voffset4">
+    @foreach (var item in Model)
+    {
+        <li>
+            <div class="date">
+                <div class="month">
+                    @item.DateTime.ToString("MMM")
+                </div>
+                <div class="day">
+                    @item.DateTime.ToString("d ")
+                </div>
+            </div>
+            <div class="details">
+                <span class="master">
+                    @item.Venue
+                </span>
+                <span class="genre">
+                    @item.Genre.Name
+                </span>
+                <div class="actions">
+                    <a href="@Url.Action("Edit", "Look", new { id=item.Id})">
+                        Edit
+                    </a>
+                    <a href="#" class="js-cancel" data-id="@item.Id">
+                        Cancel
+                    </a>
+                </div>
+            </div>
+        </li>
+    }
+</ul>
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $(".js-cancel").click(function (e) {
+                var link = $(e.target);
+
+                bootbox.dialog({
+                    message: "Are U sure u want to delete this look?",
+                    title: "Confirm",
+                    buttons: {
+                        no: {
+                            label: "No",
+                            className: "btn-default",
+                            callback: function () {
+                                bootbox.HideAll();
+                            }
+                        },
+                        yes: {
+                            label: "Yes",
+                            className: "btn-danger",
+                            callback: function () {
+                                $.ajax({
+                                    url: "/api/projs/" + link.attr("data-id"),
+                                    method: "DELETE"
+                                })
+                       .done(function () {
+                           link.parents("li").fadeOut(function () {
+                               $(this).remove();
+                           });
+                       })
+                       .fail(function () {
+                           alert("WRONG WRONG!");
+                       });
+
+                            }
+                        }
+                    }
+                });
+            });
+        });
+
+    </script>
+}
