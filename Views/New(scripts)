@@ -24,6 +24,27 @@
             }).on("typeahead:select", function (e, customer) {
                 vm.customerId = customer.id;
             });
+            var products = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                remote: {
+                    url: '/api/products?query=%QUERY',
+                    wildcard: '%QUERY'
+                }
+            });
+
+            $("#product").typeahead({
+                minLength: 3,
+                highlight: true
+            }, {
+                name: "products",
+                display: "name",
+                source: products
+            }).on("typeahead:select", function (e, product) {
+                $("#products").append("<li class='list-group-item'>" + product.name + "</li>");
+                $("#product").typeahead("val", "");
+                vm.productIds.push(product.id);
+            });
         });
     </script>
     
